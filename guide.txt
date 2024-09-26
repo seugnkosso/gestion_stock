@@ -1,0 +1,7 @@
+-----------------------création de projet angular
+--telecharger angular cli
+-npm install -g @angular/cli
+
+--creer le projet angular
+-ng new <project-name>
+
