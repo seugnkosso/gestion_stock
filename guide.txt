@@ -5,3 +5,29 @@
 --creer le projet angular
 -ng new <project-name>
 
+
+---------------------tailwind css
+---installer tailwind css
+-npm install tailwindcss --save-dev
+
+--creer tailwind.config.js
+-npx tailwindcss init
+
+--parametrer tailwind.config.js
+
+--paramettrer style.css
+
+--install flowbite
+-npm install flowbite
+-revoir tailwind.config.js
+
+--update app.components.ts
+
+
+------creer un environnement
+--ng generate environments
+
+
+
+
+
