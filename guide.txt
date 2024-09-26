@@ -28,6 +28,12 @@
 --ng generate environments
 
 
+--------------------creer les module pour Admin Vendeur and public et le core
+---dans C:\Users\Seugn_kosso\Desktop\gestion_Stock\Gestion_stock_front\src\app
+-ng g module vvendeur --routing
+
+
+
 
 
 
