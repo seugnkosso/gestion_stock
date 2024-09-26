@@ -62,4 +62,14 @@
 
 
 
+-----------------afficher la liste des Admin et mise en place du header et sidebar
+--creer le components
+-dans src\app\admin\pages
 
+--mettre en place le route
+
+--creer les models
+
+--creer le service
+-interface
+-impl

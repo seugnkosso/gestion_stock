@@ -29,7 +29,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     if (localStorage.getItem('role') === 'Admin') {
-      this.router.navigateByUrl('/RP/cours');
+      this.router.navigateByUrl('/Admin/admins');
     } else if(localStorage.getItem('role') === 'Vendeur') {
       this.router.navigateByUrl(
         '/Professeurs/cours/' + localStorage.getItem('idUser')
@@ -55,7 +55,7 @@ export class LoginComponent {
         );
           localStorage.setItem('idUser', '' + res.results.id);
           if (res.results.roles.indexOf('Admin') != -1) {
-            this.router.navigateByUrl('/RP/cours');
+            this.router.navigateByUrl('/Admin/admins');
           }
           if (res.results.roles.indexOf('Vendeur') != -1) {
             this.router.navigateByUrl('/professeur/cours/' + res.results.id);
