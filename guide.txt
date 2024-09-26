@@ -33,6 +33,32 @@
 -ng g module vvendeur --routing
 
 
+---------------------mettre en place le login pages
+--creer le package pages et le component login
+
+--mettre en place le html dans src\app\public\pages\login\login.component.html
+
+--partir dans src\app\public\pages\login\login.component.ts
+-la représente le controller
+
+--mettre en place les service de login
+-partir dans src\app\core\services\auth
+-ou se passe la logique
+
+--creer les models pour la login
+-loginModel
+-RoleEnum
+-restResponseModel
+
+--creer un interceptors
+-tokeninterceptor intercepte le token
+
+--creer le directive
+-ifAuthentication directive
+
+--creer le routes
+-dans src\app\app.routes.ts
+
 
 
 
