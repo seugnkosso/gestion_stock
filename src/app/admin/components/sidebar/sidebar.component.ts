@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalApp } from '../../../GlobalApp';
 
 @Component({
   selector: 'app-sidebar',

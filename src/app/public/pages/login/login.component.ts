@@ -30,9 +30,9 @@ export class LoginComponent {
   ngOnInit(): void {
     if (localStorage.getItem('role') === 'Admin') {
       this.router.navigateByUrl('/Admin/admins');
-    } else if(localStorage.getItem('role') === 'Vendeur') {
+    } else if(localStorage.getItem('role') === 'Vendeur' || localStorage.getItem('role') === 'Admin') {
       this.router.navigateByUrl(
-        '/Professeurs/cours/' + localStorage.getItem('idUser')
+        '/Vendeur/produits'
       );
     }else{
       this.router.navigateByUrl(
@@ -56,9 +56,8 @@ export class LoginComponent {
           localStorage.setItem('idUser', '' + res.results.id);
           if (res.results.roles.indexOf('Admin') != -1) {
             this.router.navigateByUrl('/Admin/admins');
-          }
-          if (res.results.roles.indexOf('Vendeur') != -1) {
-            this.router.navigateByUrl('/professeur/cours/' + res.results.id);
+          }else if (res.results.roles.indexOf('Vendeur') != -1 || res.results.roles.indexOf('Admin') != -1) {
+            this.router.navigateByUrl('/Vendeur/produits');
           }
         } else {
           console.log('Error');

@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  deconnecter() {
+    localStorage.clear();
+    window.location.reload();
+  }
 }

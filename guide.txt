@@ -85,3 +85,16 @@
 --component src\app\core\components\pagination
 --importer la pagination component dans les component qui l'utilise
 
+
+---------------affichage des produits
+--creer le component pour les produit
+
+--creer la route
+
+--creer le model listeProduit
+
+--creer le service
+
+--partir dans le component => dans le controlleur importer le services
+
+

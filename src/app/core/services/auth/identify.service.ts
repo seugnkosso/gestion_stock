@@ -34,7 +34,7 @@ export class IdentifyService {
   VendeurIsIdentified() {
     return (
       this.authservice.authentification() == true &&
-      this.getRoleConnecter() == Role.Vendeur
+      (this.getRoleConnecter() == Role.Vendeur || this.getRoleConnecter() == Role.Admin)
     );
   }
 }
