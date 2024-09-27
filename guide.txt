@@ -73,3 +73,15 @@
 --creer le service
 -interface
 -impl
+
+
+
+
+
+
+
+--------------------------pagination
+--pagination models
+--component src\app\core\components\pagination
+--importer la pagination component dans les component qui l'utilise
+
