@@ -98,3 +98,8 @@
 --partir dans le component => dans le controlleur importer le services
 
 
+
+----------------------formulaire d'ajout de produit 1
+-creer le component de formulaire
+-l'intégrer dans le html de produit avec des bouton ouvert fermer
+-valider les champs.....................

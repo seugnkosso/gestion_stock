@@ -1,0 +1,160 @@
+<section class="fixed top-0 bottom-0 left-0 right-0 justify-center items-center flex flex-col">
+<div class="bg-white relative p-4 flex flex-col justify-center items-center border-2 rounded-xl w-[50%]">
+  <div (click)="closeForm()" class="text-orange-600 font-bold text-3xl pb-2 absolute right-4 cursor-pointer top-2">
+    <p>X</p>
+  </div>
+  <div class="text-orange-600 font-bold text-3xl pb-2 ">
+    <h1>Ajout de produit</h1>
+  </div>
+  <form class="w-[100%]" [formGroup]="form" (ngSubmit)="(form.valid)">
+    <div class="rounded-xl items-center  my-2 p-2 border-2 w-full">
+      <div class="flex justify-between gap-2">
+        <input formControlName="libelle" [ngClass]="{
+          'w-full rounded-xl': true,
+          'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+            form.controls['libelle'].errors &&
+            (form.controls['libelle'].dirty ||
+              form.controls['libelle'].touched)
+        }"
+        placeholder="libelle"  type="text" name="libelle" id="">
+        <input formControlName="categorie" [ngClass]="{
+          'w-full rounded-xl': true,
+          'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+            form.controls['categorie'].errors &&
+            (form.controls['categorie'].dirty ||
+              form.controls['categorie'].touched)
+        }" placeholder="categorie"  type="text" name="categorie" id="">
+        <input formControlName="reference" [ngClass]="{
+          'w-full rounded-xl': true,
+          'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+            form.controls['reference'].errors &&
+            (form.controls['reference'].dirty ||
+              form.controls['reference'].touched)
+        }" placeholder="reference"  type="text" name="reference" id="">
+      </div>
+      <div class="flex gap-3">
+        @if (form.controls['libelle'].errors && (form.controls['libelle'].dirty
+        || form.controls['libelle'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">le libelle</span> est obligatoire.
+        </p>
+        }
+        @if (form.controls['categorie'].errors && (form.controls['categorie'].dirty
+        || form.controls['categorie'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">la categorie</span> est obligatoire.
+        </p>
+        }
+        @if (form.controls['reference'].errors && (form.controls['reference'].dirty
+        || form.controls['reference'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">la reference</span> est obligatoire.
+        </p>
+        }
+      </div>
+    </div>
+    <div class="flex justify-between gap-2 rounded-xl items-center  my-2 p-2 border-2 w-full">
+      <input formControlName="photo" [ngClass]="{
+        'w-full rounded-xl': true,
+        'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+          form.controls['photo'].errors &&
+          (form.controls['photo'].dirty ||
+            form.controls['photo'].touched)
+      }" placeholder="photo" type="text" name="photo" id="">
+    </div>
+    <div class="rounded-xl items-center  my-2 p-2 border-2 w-full">
+      <div class="flex justify-between gap-2 ">
+          <input formControlName="prixAchat" [ngClass]="{
+            'w-full rounded-xl': true,
+            'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+              form.controls['prixAchat'].errors &&
+              (form.controls['prixAchat'].dirty ||
+                form.controls['prixAchat'].touched)
+          }" placeholder="prixAchat"  type="number" name="prixAchat" id="">
+          <input formControlName="prixVente" [ngClass]="{
+            'w-full rounded-xl': true,
+            'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+              form.controls['prixVente'].errors &&
+              (form.controls['prixVente'].dirty ||
+                form.controls['prixVente'].touched)
+          }" placeholder="prixVente"  type="number" name="prixVente" id="">
+          <input formControlName="prixVenteMin" [ngClass]="{
+            'w-full rounded-xl': true,
+            'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+              form.controls['prixVenteMin'].errors &&
+              (form.controls['prixVenteMin'].dirty ||
+                form.controls['prixVenteMin'].touched)
+          }" placeholder="prixVenteMin"  type="number" name="prixVenteMin" id="">
+          <input formControlName="qte" [ngClass]="{
+            'w-full rounded-xl': true,
+            'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
+              form.controls['qte'].errors &&
+              (form.controls['qte'].dirty ||
+                form.controls['qte'].touched)
+          }" placeholder="Quantité"  type="number" name="prixVenteMin" id="">
+      </div>
+      <div class="flex gap-3">
+        @if (form.controls['prixAchat'].errors?.['required'] && (form.controls['prixAchat'].dirty
+        || form.controls['prixAchat'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">le prix achat</span> est obligatoire.
+        </p>
+        }
+        @if (form.controls['prixAchat'].errors?.['min'] && (form.controls['prixAchat'].dirty
+        || form.controls['prixAchat'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          le prix d'achat doit etre supperieur a 0
+        </p>
+        }
+        @if (form.controls['prixVente'].errors?.['required'] && (form.controls['prixVente'].dirty
+        || form.controls['prixVente'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">le prix de vente</span> est obligatoire.
+        </p>
+        }
+        @if (form.controls['prixVente'].errors?.['min'] && (form.controls['prixVente'].dirty
+        || form.controls['prixVente'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          le prix de vente doit etre supperieur a 0
+        </p>
+        }
+        @if (form.controls['prixVenteMin'].errors?.['required'] && (form.controls['prixVenteMin'].dirty
+        || form.controls['prixVenteMin'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">le prix de vente min</span> est obligatoire.
+        </p>
+        }
+        @if (form.controls['prixVenteMin'].errors?.['min'] && (form.controls['prixVenteMin'].dirty
+        || form.controls['prixVenteMin'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          le prix de vente minimum doit etre supperieur a 0
+        </p>
+        }
+        @if (form.controls['qte'].errors?.['required'] && (form.controls['qte'].dirty
+        || form.controls['qte'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">la quantité</span> est obligatoire.
+        </p>
+        }
+        @if (form.controls['qte'].errors?.['min'] && (form.controls['qte'].dirty
+        || form.controls['qte'].touched)) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          la quantité doit etre supperieur a 0
+        </p>
+        }
+      </div>
+    </div>
+    <input class="hidden" type="number" name="magasinId" id="">
+    <div class="float-end border-2 rounded-xl items-center cursor-pointer  text-white  my-2  border-2">
+      <input
+      [ngClass]="{
+          'p-2' : true,
+          'bg-orange-600 ': form.valid,
+          'bg-orange-200' : form.invalid,
+      }"
+      [disabled]="form.invalid"
+      (click)="onSubmit()" type="submit" value="enregistrer">
+    </div>
+  </form>
+</div>
+</section>

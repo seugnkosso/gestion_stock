@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { RestResponse } from '../../../core/models/rest.response';
-import { ProduitList } from '../../../core/models/produit.model.ts';
 import { PaginationModel } from '../../../core/models/pagination.model';
 import { ProduitImplService } from '../../../core/services/impl/produit-impl.service';
 import { PaginationComponent } from '../../../core/components/pagination/pagination.component';
+import { ProduitList } from '../../../core/models/produit.model';
+import { CommonModule } from '@angular/common';
+import { FormProduitComponent } from './form-produit/form-produit.component';
 
 @Component({
   selector: 'app-produit',
   standalone: true,
-  imports: [PaginationComponent],
+  imports: [PaginationComponent,CommonModule,FormProduitComponent],
   templateUrl: './produit.component.html',
   styleUrl: './produit.component.css'
 })
@@ -50,4 +52,14 @@ export class ProduitComponent implements OnInit{
         this.refresh()
       }
   }
+
+  // FORM ADD ON
+  isFormClosed = true;
+  openForm() {
+    this.isFormClosed = false;
+  }
+  closeForm() {
+    this.isFormClosed = true;
+  }
+  // FORM ADD OFF
 }
