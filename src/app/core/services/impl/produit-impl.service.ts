@@ -13,12 +13,17 @@ export class ProduitImplService implements ProduitService {
   apiUrl = `${environment.APIURL}/produits`;
 
   constructor(public http: HttpClient) { }
+
   create(produit: ProduitRequest): Observable<RestResponse<ProduitList>> {
     return this.http.post<RestResponse<ProduitList>>(this.apiUrl, produit)
   }
 
   findAll(page: number = 0,search: string =""): Observable<RestResponse<ProduitList[]>> {
     return this.http.get<RestResponse<ProduitList[]>>(`${this.apiUrl}?id=${localStorage.getItem('idUser')}&page=${page}&search=${search}`)
+  }
+
+  findByLibelle(libelle: string): Observable<RestResponse<ProduitList>> {
+    return this.http.get<RestResponse<ProduitList>>(`${this.apiUrl}/libelle?libelle=${libelle}`)
   }
 
 }
