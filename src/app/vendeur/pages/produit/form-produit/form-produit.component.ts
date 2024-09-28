@@ -1,6 +1,8 @@
+import { ProduitRequest } from './../../../../core/models/produit.model';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
+import { ProduitImplService } from '../../../../core/services/impl/produit-impl.service';
 
 @Component({
   selector: 'app-form-produit',
@@ -10,13 +12,12 @@ import { FormsModule, ReactiveFormsModule, Validators, FormBuilder } from '@angu
   styleUrl: './form-produit.component.css'
 })
 export class FormProduitComponent {
-onSubmit() {
-throw new Error('Method not implemented.');
-}
+
   form: any
   @Output() onCloseForm :EventEmitter<any> = new EventEmitter()
   constructor(
     private fb: FormBuilder,
+    private produitervice : ProduitImplService
   ){
     this.form = this.fb.group({
       libelle:  ['',[Validators.required]] ,
@@ -29,6 +30,13 @@ throw new Error('Method not implemented.');
       prixVenteMin:  ['',[Validators.required,Validators.min(1)]] ,
       magasinId:  ['',[Validators.required]]
     });
+  }
+
+  onSubmit() {
+    const produitRequest = this.form.value as ProduitRequest;
+    this.produitervice.create(produitRequest).subscribe((data)=>{
+      this.closeForm();
+    })
   }
 
   closeForm() {

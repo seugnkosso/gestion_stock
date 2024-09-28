@@ -4,17 +4,21 @@ import { Observable } from 'rxjs';
 import { RestResponse } from '../../models/rest.response';
 import { environment } from '../../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { ProduitList } from '../../models/produit.model';
+import { ProduitList, ProduitRequest } from '../../models/produit.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitImplService implements ProduitService {
-  apiUrl = `${environment.APIURL}/produits?id=${localStorage.getItem('idUser')}`;
+  apiUrl = `${environment.APIURL}/produits`;
 
   constructor(public http: HttpClient) { }
+  create(produit: ProduitRequest): Observable<RestResponse<ProduitList>> {
+    return this.http.post<RestResponse<ProduitList>>(this.apiUrl, produit)
+  }
 
   findAll(page: number = 0,search: string =""): Observable<RestResponse<ProduitList[]>> {
-    return this.http.get<RestResponse<ProduitList[]>>(`${this.apiUrl}&page=${page}&search=${search}`)
+    return this.http.get<RestResponse<ProduitList[]>>(`${this.apiUrl}?id=${localStorage.getItem('idUser')}&page=${page}&search=${search}`)
   }
+
 }

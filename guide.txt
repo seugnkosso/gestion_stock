@@ -103,3 +103,11 @@
 -creer le component de formulaire
 -l'intégrer dans le html de produit avec des bouton ouvert fermer
 -valider les champs.....................
+
+
+
+
+----------------------ajout du produit
+--creer le model
+--creer le service
+--aller dans le controller importer le service
