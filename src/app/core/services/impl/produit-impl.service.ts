@@ -1,10 +1,11 @@
+import { ProduitRequest } from './../../models/produit.model';
 import { Injectable } from '@angular/core';
 import { ProduitService } from '../produit.service';
 import { Observable } from 'rxjs';
 import { RestResponse } from '../../models/rest.response';
 import { environment } from '../../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { ProduitList, ProduitRequest } from '../../models/produit.model';
+import { ProduitList } from '../../models/produit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class ProduitImplService implements ProduitService {
   apiUrl = `${environment.APIURL}/produits`;
 
   constructor(public http: HttpClient) { }
+  update(produit: ProduitRequest): Observable<RestResponse<ProduitRequest>> {
+    return this.http.put<RestResponse<ProduitRequest>>(this.apiUrl, produit)
+  }
 
   create(produit: ProduitRequest): Observable<RestResponse<ProduitList>> {
     return this.http.post<RestResponse<ProduitList>>(this.apiUrl, produit)

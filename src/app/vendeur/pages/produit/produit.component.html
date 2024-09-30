@@ -25,9 +25,8 @@
         <td class="border-2 p-2">{{ item.prixVente }}</td>
         <td class="border-2 p-2">{{ item.prixVenteMin }}</td>
         <td class="border-2 p-2">{{ item.qte }}</td>
-        <td class="border-2 p-2 text-right flex justify-end items-center gap-2">
-          <div class="my-2" > <a class="text-orange-400 font-bold cursor-pointer text-1xl p-3 bg-orange-50 rounded-2xl" >update</a></div>
-          <div class="my-2"><a class="text-orange-600 font-bold cursor-pointer text-1xl p-3 bg-orange-50 rounded-2xl">delete</a></div>
+        <td class="border-2 p-2 text-right mr-3">
+          <div class="my-2" (click)="produitModifRequete(item.libelle!)"> <a class="text-orange-400 font-bold cursor-pointer text-1xl p-3 bg-orange-50 rounded-2xl" >update</a></div>
         </td>
       </tr>
     }
@@ -42,7 +41,7 @@
         '-translate-x-full': isFormClosed
       }"
     >
-      <app-form-produit (onCloseForm)="closeForm()"></app-form-produit>
+      <app-form-produit [produitModifier]="produitModif" (onCloseForm)="closeForm()"></app-form-produit>
     </div>
 </section>
 

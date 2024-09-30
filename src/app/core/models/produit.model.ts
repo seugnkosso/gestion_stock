@@ -1,5 +1,5 @@
 export interface ProduitList {
-  id?: number;
+  id?: number | null,
   libelle?: string,
   qte?: number,
   categorie?: string,
@@ -11,6 +11,7 @@ export interface ProduitList {
 }
 
 export interface ProduitRequest {
+  id?: string,
   libelle?: string,
   qte?: number,
   categorie?: string,

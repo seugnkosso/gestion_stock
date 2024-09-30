@@ -1,4 +1,4 @@
-<section class="fixed top-0 bottom-0 left-0 right-0 justify-center items-center flex flex-col">
+<section (mouseenter)="chargeForm()" class="fixed top-0 bottom-0 left-0 right-0 justify-center items-center flex flex-col">
 <div class="bg-white relative p-4 flex flex-col justify-center items-center border-2 rounded-xl w-[50%]">
   <div (click)="closeForm()" class="text-orange-600 font-bold text-3xl pb-2 absolute right-4 cursor-pointer top-2">
     <p>X</p>
@@ -16,9 +16,10 @@
             (form.controls['libelle'].dirty ||
               form.controls['libelle'].touched)
         }"
-        placeholder="libelle"  type="text" name="libelle" id="">
-        <input formControlName="categorie" [ngClass]="{
-          'w-full rounded-xl': true,
+
+        #libelle (keyup)="searchLibelle(libelle.value)" (change)="chargeMagasinId()" placeholder="libelle"  type="text" name="libelle" id="">
+        <input formControlName="categorie"  [ngClass]="{
+          'w-full rounded-xl hidden ': true,
           'bg-red-50 border border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 dark:bg-gray-700 focus:border-red-500   dark:text-red-500 dark:placeholder-red-500 dark:border-red-500':
             form.controls['categorie'].errors &&
             (form.controls['categorie'].dirty ||
@@ -37,6 +38,11 @@
         || form.controls['libelle'].touched)) {
         <p class="mt-2 text-sm text-red-600 dark:text-red-500">
           <span class="font-medium">le libelle</span> est obligatoire.
+        </p>
+        }
+        @if (dataProd?.results != null && form.controls['id'].value == null ) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          <span class="font-medium">le produit</span> existe deja.
         </p>
         }
         @if (form.controls['categorie'].errors && (form.controls['categorie'].dirty
@@ -144,17 +150,30 @@
         }
       </div>
     </div>
-    <input class="hidden" type="number" name="magasinId" id="">
-    <div class="float-end border-2 rounded-xl items-center cursor-pointer  text-white  my-2  border-2">
-      <input
-      [ngClass]="{
-          'p-2' : true,
-          'bg-orange-600 ': form.valid,
-          'bg-orange-200' : form.invalid,
-      }"
-      [disabled]="form.invalid"
-      (click)="onSubmit()" type="submit" value="enregistrer">
-    </div>
+    <input class="hidden" type="number" formControlName="magasinId" name="magasinId" id="">
+    @if((form.controls['id'].value == null)){
+      <div class="float-end border-2 rounded-xl items-center cursor-pointer  text-white  my-2  border-2">
+        <input
+        [ngClass]="{
+            'p-2' : true,
+            'bg-orange-600 ': form.valid,
+            'bg-orange-300 ': form.invalid || (dataProd?.results != null)
+        }"
+        [disabled]="form.invalid || (dataProd?.results != null)"
+        (click)="onSubmit()" type="submit" value="enregistrer">
+      </div>
+    }@else {
+      <div class="float-end border-2 rounded-xl items-center cursor-pointer  text-white  my-2  border-2">
+        <input
+        [ngClass]="{
+            'p-2' : true,
+            'bg-orange-600 ': form.valid,
+            'bg-orange-300 ': form.invalid
+        }"
+        [disabled]="form.invalid"
+        (click)="onSubmitModification()" type="submit" value="modifier">
+      </div>
+    }
   </form>
 </div>
 </section>

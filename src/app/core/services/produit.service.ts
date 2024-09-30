@@ -6,4 +6,6 @@ import { ProduitList, ProduitRequest } from '../models/produit.model';
 export interface ProduitService{
   findAll(page:number,search:string): Observable<RestResponse<ProduitList[]>> ;
   create(produit:ProduitRequest):Observable<RestResponse<ProduitList>> ;
+  update(produit:ProduitRequest):Observable<RestResponse<ProduitRequest>> ;
+  findByLibelle(libelle:string):Observable<RestResponse<ProduitList>> ;
 }

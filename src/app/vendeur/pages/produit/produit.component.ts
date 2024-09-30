@@ -1,9 +1,9 @@
+import { ProduitList } from './../../../core/models/produit.model';
 import { Component, OnInit } from '@angular/core';
 import { RestResponse } from '../../../core/models/rest.response';
 import { PaginationModel } from '../../../core/models/pagination.model';
 import { ProduitImplService } from '../../../core/services/impl/produit-impl.service';
 import { PaginationComponent } from '../../../core/components/pagination/pagination.component';
-import { ProduitList } from '../../../core/models/produit.model';
 import { CommonModule } from '@angular/common';
 import { FormProduitComponent } from './form-produit/form-produit.component';
 
@@ -16,8 +16,7 @@ import { FormProduitComponent } from './form-produit/form-produit.component';
 })
 export class ProduitComponent implements OnInit{
 
-
-
+  produitModif! : ProduitList | null
   response? :RestResponse<ProduitList[]>
   dataPagination : PaginationModel = {
     pages: [],
@@ -46,16 +45,24 @@ export class ProduitComponent implements OnInit{
   }
 
   searche(search:string){
-    if (search.length > 3){
+    if (search.length >= 2){
         this.refresh(0,search)
       }else if(search.length == 0){
         this.refresh()
       }
   }
 
+  produitModifRequete(libelle: string) {
+    this.produitService.findByLibelle(libelle).subscribe((data)=>{
+      this.produitModif = data.results
+      this.isFormClosed = false
+    })
+  }
+
   // FORM ADD ON
   isFormClosed = true;
   openForm() {
+    this.produitModif = null
     this.isFormClosed = false;
   }
   closeForm() {
