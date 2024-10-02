@@ -111,3 +111,8 @@
 --creer le model
 --creer le service
 --aller dans le controller importer le service
+
+
+
+-------------------faire la vente
+--

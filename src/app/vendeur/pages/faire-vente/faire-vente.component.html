@@ -1,0 +1,75 @@
+<section class="py-3">
+<div class="flex justify-center items-center">
+  <input (keyup)="searchProd(prod.value)" #prod class="rounded-2xl w-[50%] border-orange-300" placeholder="search produit" type="search" name="searchProd" id="">
+</div>
+
+<div class="text-center my-[2rem]">
+  @if(message.get('error') != null){
+    <p class="text-red-500 text-2xl">{{message.get('error')}}</p>
+  }
+  @if(message.get('addSuccess') != null){
+    <p class="text-green-700 text-2xl">{{message.get('addSuccess')}}</p>
+  }
+  @for (item of produits; track $index) {
+    <div class="">
+      <form class="flex my-2 p-1 border-2 w-full  items-center gap-[3rem]">
+        <p>libelle : {{item.libelle}}</p>
+        <p>ref : {{item.reference}}</p>
+        <p>PV : {{item.prixVente}}fr</p>
+        <p>PVM : {{item.prixVenteMin}}fr</p>
+        <p class="hidden" ><input  value="{{item.libelle}}" #libelle  name="libelle"   ></p>
+        <p class="hidden" ><input  value="{{item.reference}}" #reference  name="reference"   ></p>
+        <p>quantité : <input class="rounded-2xl border-orange-300" type="number" value="1" #qte  name="qte"></p>
+        <p class="hidden" > <input  type="number" value="{{item.id}}" #id  name="id"></p>
+        <p>prix : <input class="rounded-2xl border-orange-300" type="number" value="{{item.prixVente}}" #prix name="prix"   ></p>
+        <button [ngClass]="{
+            'text-orange-600 font-bold cursor-pointer text-1xl p-3 bg-orange-300 rounded-2xl': true,
+            'bg-white ': false
+        }"
+          type="submit"    (click)="onSubmit(prix.value, qte.value,libelle.value,reference.value,id.value,item.qte)" >ajouter</button>
+      </form>
+    </div>
+  }
+</div>
+  <div class="text-center my-[2rem] text-4xl text-black font-bold">
+    <h2>panier</h2>
+  </div>
+  <div class="w-full flex flex-col justify-center items-center">
+    <div class="w-[70%] my-2 p-2 border-2">
+      <table class="w-full">
+        <tr class="border-y-2 text-left">
+          <th>N°</th>
+          <th>libelle</th>
+          <th>reference</th>
+          <th>qte</th>
+          <th>prix</th>
+        </tr>
+          @for (item of produitStorage; track $index) {
+            <tr class="border-y-2 text-left ">
+              <td>{{ $index + 1 }}</td>
+              <td>{{ item.get('libelle')}}</td>
+              <td>{{ item.get('reference')}}</td>
+              <td>{{ item.get('qte') }}</td>
+              <td>{{ item.get('prix') }}</td>
+              <td><button (click)="deleteProd(item)" class="text-black float-right font-bold cursor-pointer text-1xl py-1 px-2 my-1 bg-red-300 rounded-2xl">supprimer</button></td>
+            </tr>
+          }
+      </table>
+    </div>
+
+    <div class="w-[70%] my-3">
+      <form [formGroup]="form" (ngSubmit)="form.valid" class="flex justify-between items-center">
+        <p class="text-2xl">total : <span class="font-bold">{{total}}</span></p>
+        <div class="flex gap-2">
+          <input (keyup)="searchClient()" class="rounded-2xl border-orange-400 " placeholder="telepgone client" formControlName="telephone" type="number" name="telephone" id="nom">
+          <input class="rounded-2xl border-orange-400 " placeholder="nom et prenom" formControlName="username" type="text" name="username" id="nom">
+        </div>
+        <button [ngClass]="{
+          'bg-white ': form.invalid || produitStorage.length == 0,
+          'text-orange-600 font-bold cursor-pointer text-1xl p-3 bg-orange-300 rounded-2xl':true,
+        }"
+        [disabled]="form.invalid || produitStorage.length == 0 " (click)="onSubmitVente()" type="submit">faire la vente</button>
+      </form>
+    </div>
+  </div>
+</section>
