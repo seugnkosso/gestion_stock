@@ -1,0 +1,36 @@
+<section>
+  <div class="flex justify-between items-center p-5">
+    <h1 class="text-3xl text-black pb-3">liste des ventes</h1>
+    <div class="flex justify-end w-1/3 items-center gap-2">
+      <input class="rounded-2xl w-full border-orange-500" #dateSearch (change)="searcheDate(dateSearch.value)"   type="date"  name="dateSearch" id="">
+      <input class="rounded-2xl w-full border-orange-500" #clientSearch (keyup)="searcheClient(clientSearch.value)"   type="text" placeholder="telephone client" name="clientSearch" id="">
+    </div>
+  </div>
+
+  <table class="w-full text-center border-2 border-collapse">
+    <tr class="border-2 p-2">
+      <th class="border-2 p-2">client</th>
+      <th class="border-2 p-2">date Vente</th>
+      <th class="border-2 p-2">total</th>
+      <th class="border-2 p-2"></th>
+    </tr>
+    @for (item of data?.results; track $index) {
+      <tr class="border-2 p-2">
+        <td class="border-2 p-2">{{ item.client }}</td>
+        <td class="border-2 p-2">{{ item.date }}</td>
+        <td class="border-2 p-2">{{ item.total }}</td>
+        <td class="border-2 p-2 text-right mr-3">
+          <div class="my-2 text-center"> <a class="text-orange-400 font-bold cursor-pointer text-1xl p-3 bg-orange-50 rounded-2xl">facture</a></div>
+        </td>
+      </tr>
+    }
+</table>
+<div class="flex justify-between items-center">
+<p class="text-2xl">total ventes : <span class="font-bold">{{total}} fr</span></p>
+  <app-pagination
+    [data]="dataPagination"
+    (OnGetNumberPage)="paginate($event)"
+  ></app-pagination>
+</div>
+</section>
+
