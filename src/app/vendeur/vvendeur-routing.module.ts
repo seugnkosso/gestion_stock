@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProduitComponent } from './pages/produit/produit.component';
 import { FaireVenteComponent } from './pages/faire-vente/faire-vente.component';
 import { VenteComponent } from './pages/vente/vente.component';
+import { FactureComponent } from './pages/vente/facture/facture.component';
 
 const routes: Routes = [
           {
@@ -29,7 +30,11 @@ const routes: Routes = [
               {
                 path: '',
                 component: VenteComponent,
-              }
+              },
+              {
+                path: 'facture/:venteId',
+                component: FactureComponent,
+              },
             ]
           }
     ];

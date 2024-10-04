@@ -1,0 +1,66 @@
+<section class="text-sm text-black">
+
+  <div class="ml-2">
+    <div class="w-[15%] h-[15%]">
+      <div class="w-full h-full"><img class="w-full h-full object-contain " src="assets/logo/SOS.jpg" alt=""></div>
+    </div>
+    <div class="mt-2 border-b-4 w-[50%]">
+      <p>Magasin : <span class="font-bold" >{{vente?.magasin}}</span></p>
+      <p>Address : <span class="font-bold" >{{vente?.address}}</span></p>
+      <p>Tel : <span class="font-bold" > {{vente?.tel}} </span> </p>
+    </div>
+  </div>
+
+  <div class="mt-[3rem] mb-[4rem] mr-[3rem]">
+    <p class="float-right">Date : <span class="font-bold" > {{vente?.date}} </span></p>
+  </div>
+
+  <div class="ml-2 mb-[2rem]">
+    <p>Client : <span class="font-bold" >{{vente?.client}}</span></p>
+  </div>
+
+  <div class="ml-2 mb-[2rem]">
+    <p>facture N° : <span class="font-bold" > {{numFacture}} </span></p>
+  </div>
+
+  <div class="">
+      <table class="table-fixed mx-auto w-[99%] text-center">
+          <thead class="uppercase bg-[#ffffff] text-[#000000]" style="background-color: #ffffff; color: #000000;">
+              <tr>
+                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">Qte</td>
+                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">designation</td>
+                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">prix unit</td>
+                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">remise</td>
+                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">montant</td>
+              </tr>
+          </thead>
+          <tbody class="bg-white text-black bg-[#FFFFFF] font-bold" >
+              @for (item of vente?.detailVenteListDtos; track $index) {
+                <tr class="py-1">
+                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.qte}}</td>
+                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.libelle}}</td>
+                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.prix}}</td>
+                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.remise}}</td>
+                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.totalVente}}</td>
+                </tr>
+              }
+            <tr class="py-1">
+              <td class="py-1 border border-black text-center p-4" colspan="2" contenteditable="true">NET A PAYER</td>
+              <td class="py-1 border border-black text-center  p-4" colspan="3" contenteditable="true">{{vente?.total}}</td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+  <div class="ml-2 mt-[4rem] mb-[10rem]">
+    <p>Arrêtée la présente facture à la somme de : <input class="border-0" type="text"></p>
+  </div>
+
+  <div class="font-bold mb-[10rem] mr-[3rem]">
+    <p class="float-right text-2xl" >le responsable</p>
+  </div>
+
+  <div class="">
+    <button (click)="print()" type="button" class="inprint bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-[2rem]">imprimer</button>
+  </div>
+
+</section>

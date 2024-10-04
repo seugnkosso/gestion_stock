@@ -4,11 +4,12 @@ import { RestResponse } from '../../../core/models/rest.response';
 import { VenteList } from '../../../core/models/vente.model';
 import { PaginationComponent } from '../../../core/components/pagination/pagination.component';
 import { PaginationModel } from '../../../core/models/pagination.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-vente',
   standalone: true,
-  imports: [PaginationComponent],
+  imports: [PaginationComponent,RouterLink],
   templateUrl: './vente.component.html',
   styleUrl: './vente.component.css'
 })

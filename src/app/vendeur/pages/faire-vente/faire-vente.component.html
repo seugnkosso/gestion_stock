@@ -61,7 +61,7 @@
       <form [formGroup]="form" (ngSubmit)="form.valid" class="flex justify-between items-center">
         <p class="text-2xl">total : <span class="font-bold">{{total}}</span></p>
         <div class="flex gap-2">
-          <input (keyup)="searchClient()" class="rounded-2xl border-orange-400 " placeholder="telepgone client" formControlName="telephone" type="number" name="telephone" id="nom">
+          <input (keyup)="searchClient()" class="rounded-2xl border-orange-400 " placeholder="telephone client" formControlName="telephone" type="number" name="telephone" id="nom">
           <input class="rounded-2xl border-orange-400 " placeholder="nom et prenom" formControlName="username" type="text" name="username" id="nom">
         </div>
         <button [ngClass]="{
