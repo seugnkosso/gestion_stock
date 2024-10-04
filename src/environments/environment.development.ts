@@ -1,3 +1,3 @@
 export const environment = {
-  APIURL : "http://127.0.0.1:10001",
+  APIURL : "http://192.168.1.9:10001",
 };
