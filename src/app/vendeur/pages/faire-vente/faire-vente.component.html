@@ -1,4 +1,4 @@
-<section class="py-3">
+<section class="py-3 text-[0.9rem]">
 <div class="flex justify-center items-center">
   <input (keyup)="searchProd(prod.value)" #prod class="rounded-2xl w-[50%] border-orange-300" placeholder="search produit" type="search" name="searchProd" id="">
 </div>
@@ -19,18 +19,20 @@
         <p>PVM : {{item.prixVenteMin}}fr</p>
         <p class="hidden" ><input  value="{{item.libelle}}" #libelle  name="libelle"   ></p>
         <p class="hidden" ><input  value="{{item.reference}}" #reference  name="reference"   ></p>
-        <p>quantité : <input class="rounded-2xl border-orange-300" type="number" value="1" #qte  name="qte"></p>
         <p class="hidden" > <input  type="number" value="{{item.id}}" #id  name="id"></p>
-        <p>prix : <input class="rounded-2xl border-orange-300" type="number" value="{{item.prixVente}}" #prix name="prix"   ></p>
+        <p>quantité : <input class="rounded-2xl  border-orange-300" type="number" value="1" #qte  name="qte"></p>
+        <p>prix : <input class="rounded-2xl  border-orange-300" type="number" value="{{item.prixVente}}" #prix name="prix"   ></p>
         <button [ngClass]="{
             'text-orange-600 font-bold cursor-pointer text-1xl p-3 bg-orange-300 rounded-2xl': true,
             'bg-white ': false
         }"
-          type="submit"    (click)="onSubmit(prix.value, qte.value,libelle.value,reference.value,id.value,item.qte)" >ajouter</button>
+          type="submit" (click)="onSubmit(prix.value, qte.value,libelle.value,reference.value,id.value,item.qte)" >ajouter</button>
       </form>
     </div>
   }
 </div>
+
+
   <div class="text-center my-[2rem] text-4xl text-black font-bold">
     <h2>panier</h2>
   </div>
