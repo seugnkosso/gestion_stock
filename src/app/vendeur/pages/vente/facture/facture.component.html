@@ -27,26 +27,26 @@
       <table class="table-fixed mx-auto w-[99%] text-center">
           <thead class="uppercase bg-[#ffffff] text-[#000000]" style="background-color: #ffffff; color: #000000;">
               <tr>
-                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">Qte</td>
-                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">designation</td>
-                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">prix unit</td>
-                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">remise</td>
-                  <td class="py-1 border border-black text-center font-bold p-4" contenteditable="true">montant</td>
+                  <td class="py-1 border border-black text-center font-bold w-[20%] p-4" >Qte</td>
+                  <td class="py-1 border border-black text-center font-bold w-[80%] p-4" >designation</td>
+                  <td class="py-1 border border-black text-center font-bold w-[20%] p-4" >prix unit</td>
+                  <td class="py-1 border border-black text-center font-bold w-[20%] p-4" >remise</td>
+                  <td class="py-1 border border-black text-center font-bold w-[20%] p-4" >montant</td>
               </tr>
           </thead>
           <tbody class="bg-white text-black bg-[#FFFFFF] font-bold" >
               @for (item of vente?.detailVenteListDtos; track $index) {
-                <tr class="py-1">
-                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.qte}}</td>
-                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.libelle}}</td>
-                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.prix}}</td>
-                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.remise}}</td>
-                    <td class="py-1 border border-black text-center  p-4" contenteditable="true">{{item.totalVente}}</td>
+                <tr class="py-1 w-full ">
+                    <td class="py-1 border border-black text-center w-[20%] p-4">{{item.qte}}</td>
+                    <td class="py-1 border border-black text-center w-[80%]  p-4 ">{{item.libelle}}</td>
+                    <td class="py-1 border border-black text-center w-[20%] p-4">{{item.prix}}</td>
+                    <td class="py-1 border border-black text-center w-[20%] p-4">{{item.remise}}</td>
+                    <td class="py-1 border border-black text-center w-[20%] p-4">{{item.totalVente}}</td>
                 </tr>
               }
             <tr class="py-1">
-              <td class="py-1 border border-black text-center p-4" colspan="2" contenteditable="true">NET A PAYER</td>
-              <td class="py-1 border border-black text-center  p-4" colspan="3" contenteditable="true">{{vente?.total}}</td>
+              <td class="py-1 border border-black text-center p-4" colspan="2" >NET A PAYER</td>
+              <td class="py-1 border border-black text-center  p-4" colspan="3" >{{vente?.total}}</td>
             </tr>
           </tbody>
       </table>

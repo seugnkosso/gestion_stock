@@ -21,7 +21,7 @@
         <p class="hidden" ><input  value="{{item.reference}}" #reference  name="reference"   ></p>
         <p class="hidden" > <input  type="number" value="{{item.id}}" #id  name="id"></p>
         <p>quantité : <input class="rounded-2xl  border-orange-300" type="number" value="1" #qte  name="qte"></p>
-        <p>prix : <input class="rounded-2xl  border-orange-300" type="number" value="{{item.prixVente}}" #prix name="prix"   ></p>
+        <p>prix : <input class="rounded-2xl  border-orange-300" step="5000" type="number" value="{{item.prixVente}}" #prix name="prix"   ></p>
         <button [ngClass]="{
             'text-orange-600 font-bold cursor-pointer text-1xl p-3 bg-orange-300 rounded-2xl': true,
             'bg-white ': false
